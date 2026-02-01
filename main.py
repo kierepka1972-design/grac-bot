@@ -1,19 +1,19 @@
 import os
-import requests
 import time
+import requests
 
-TELEGRAM_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
-CHAT_ID = os.getenv("TELEGRAM_CHAT_ID")
+TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN")
+CHAT_ID = os.getenv("CHAT_ID")
 
-def send_message(text):
+def wyslij_wiadomosc(tekst):
     url = f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/sendMessage"
     payload = {
         "chat_id": CHAT_ID,
-        "text": text
+        "text": tekst
     }
     requests.post(url, json=payload)
 
 if __name__ == "__main__":
-    send_message("✅ TEST OK — bot działa poprawnie.\nPowiadomienia GRAĆ / NIE GRAĆ będą wysyłane automatycznie.")
+    wyslij_wiadomosc("✅ TEST OK – bot działa poprawnie")
     while True:
         time.sleep(60)
