@@ -8,13 +8,13 @@ CHAT_ID = os.getenv("CHAT_ID")
 def wyslij_wiadomosc(tekst):
     url = f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/sendMessage"
     payload = {
-        "chat_id": str(CHAT_ID),
+        "chat_id": CHAT_ID,
         "text": tekst
     }
     r = requests.post(url, json=payload)
     print(r.text)
 
 if __name__ == "__main__":
-    wyslij_wiadomosc("✅ TEST OK – bot działa")
     while True:
-        time.sleep(60)
+        wyslij_wiadomosc("✅ TEST OK – bot działa (heartbeat)")
+        time.sleep(30)
